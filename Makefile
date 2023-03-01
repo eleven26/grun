@@ -18,7 +18,7 @@ format:
 
 .PHONY: test
 test:
-	go test -v ./store -cover
+	go test ./... -cover
 
 .PHONY: all
 all:

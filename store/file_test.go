@@ -147,11 +147,7 @@ func TestList(t *testing.T) {
 	assert.Nil(t, err)
 
 	assert.Equal(t, 2, len(commands))
-
-	for _, command := range commands {
-		assert.True(t, command.Id == 1 || command.Id == 2)
-		assert.True(t, command.Name == "foo" || command.Name == "foo1")
-		assert.True(t, command.Command == "ls" || command.Command == "ls1")
-		assert.True(t, command.Description == "List files in current directory." || command.Description == "List files in current directory.1")
-	}
+	cmds[0].Id = 1
+	cmds[1].Id = 2
+	assert.Equal(t, cmds, commands)
 }
