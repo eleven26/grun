@@ -9,7 +9,7 @@ import (
 
 var ListCmd = &cobra.Command{
 	Use:   "list",
-	Short: "新建新的命令",
+	Short: "列出所有命令",
 	Run:   runList,
 }
 

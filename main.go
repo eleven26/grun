@@ -25,6 +25,7 @@ func main() {
 	rootCmd.AddCommand(cmd.UpdateCmd)
 	rootCmd.AddCommand(cmd.DeleteCmd)
 	rootCmd.AddCommand(cmd.ListCmd)
+	rootCmd.AddCommand(cmd.RunCmd)
 
 	// 初始化
 	dirname, err := os.UserHomeDir()

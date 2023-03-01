@@ -7,7 +7,7 @@ import (
 
 var DeleteCmd = &cobra.Command{
 	Use:   "delete",
-	Short: "新建新的命令",
+	Short: "删除命令",
 	Run:   runDelete,
 }
 

@@ -8,7 +8,7 @@ import (
 
 var UpdateCmd = &cobra.Command{
 	Use:   "update",
-	Short: "新建新的命令",
+	Short: "更新命令",
 	Run:   runUpdate,
 }
 
