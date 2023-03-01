@@ -5,15 +5,15 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var StoreCmd = &cobra.Command{
-	Use:   "store",
-	Short: "新建新的命令",
+var AddCmd = &cobra.Command{
+	Use:   "add",
+	Short: "新建命令",
 	Run:   runStore,
 }
 
 func init() {
-	_ = StoreCmd.MarkFlagRequired("name")
-	_ = StoreCmd.MarkFlagRequired("command")
+	_ = AddCmd.MarkFlagRequired("name")
+	_ = AddCmd.MarkFlagRequired("command")
 }
 
 func runStore(cmd *cobra.Command, args []string) {

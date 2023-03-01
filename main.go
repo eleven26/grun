@@ -21,7 +21,7 @@ func main() {
 	rootCmd.PersistentFlags().StringP("command", "c", "", "命令")
 	rootCmd.PersistentFlags().StringP("description", "d", "", "描述")
 
-	rootCmd.AddCommand(cmd.StoreCmd)
+	rootCmd.AddCommand(cmd.AddCmd)
 	rootCmd.AddCommand(cmd.UpdateCmd)
 	rootCmd.AddCommand(cmd.DeleteCmd)
 	rootCmd.AddCommand(cmd.ListCmd)

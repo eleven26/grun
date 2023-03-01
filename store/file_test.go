@@ -102,7 +102,7 @@ func TestUpdate(t *testing.T) {
 	command := core.Command{
 		Name:        "bar(updated)",
 		Command:     "ls -lh(updated)",
-		Description: "List files in current directory.(updated)",
+		Description: "",
 	}
 	err = store.Update(1, command)
 	assert.Nil(t, err)
@@ -115,7 +115,8 @@ func TestUpdate(t *testing.T) {
 
 	assert.Equal(t, 1, len(cmd))
 	command.Id = 1
-	assert.Equal(t, cmd[0], command)
+	assert.NotEqual(t, cmd[0], command)
+	assert.NotEmpty(t, cmd[0].Description)
 }
 
 func TestList(t *testing.T) {

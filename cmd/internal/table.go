@@ -29,7 +29,5 @@ func OutputTable(commands []core.Command) string {
 		table.Body.Cells = append(table.Body.Cells, r)
 	}
 
-	table.SetStyle(simpletable.StyleCompactLite)
-
 	return table.String()
 }

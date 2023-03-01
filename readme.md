@@ -10,8 +10,13 @@ go install github.com/eleven26/grun@v0.0.1
 
 ## 支持的命令
 
+```shell
+grun -h
 ```
-➜  ~ grun -h
+
+输出：
+
+``` 
 使用 "-h" 参数查看所有子命令
 
 Usage:
@@ -40,24 +45,31 @@ Use "grun [command] --help" for more information about a command.
 
 ### 列出所有命令
 
+```shell
+grun list
 ```
-➜  ~ grun list
- ID       名称                            命令                                  描述
----- --------------- ----------------------------------------------- ---------------------------
- 1    qa supervisor   ansible qa -m shell -a "supervisorctl status"   qa 环境的 supervisor 状态
+
+输出：
+
+```
++----+------+---------+--------------+
+| ID | 名称 |  命令   |     描述     |
++----+------+---------+--------------+
+| 1  |  ls  | ls /var | test command |
++----+------+---------+--------------+
 ```
 
 ### 运行命令
 
 ```
 # 最后一个参数是 id
-➜  ~ grun run 1
+grun run 1
 ```
 
 ### 添加命令
 
 ```shell
-grun store -n "qa supervisor" -c "ansible qa -m shell -a \"supervisorctl status\"" -d "qa 环境的 supervisor 状态"
+grun store -n "ls" -c "ls /var" -d "test command"
 ```
 
 ### 删除命令
@@ -69,8 +81,6 @@ grun delete 1
 
 ### 更新命令
 
-// todo:fix bug
-
 ```shell
-grun update 1 -c 
+grun update 1 -c "ls /var/log"
 ```

@@ -3,6 +3,7 @@ package store
 import (
 	"encoding/json"
 	"os"
+	"reflect"
 
 	fs "github.com/eleven26/go-filesystem"
 	"github.com/eleven26/grun/core"
@@ -99,7 +100,7 @@ func (f *file) Update(id int, command core.Command) error {
 	var exists bool
 	for _, c := range commands {
 		if c.Id == id {
-			c = command
+			c = f.fillNonEmpty(c, command)
 			c.Id = id
 			exists = true
 		}
@@ -111,6 +112,21 @@ func (f *file) Update(id int, command core.Command) error {
 	}
 
 	return f.save(result)
+}
+
+// 只填充被修改的字段
+func (f *file) fillNonEmpty(old, new core.Command) core.Command {
+	fieldCount := reflect.TypeOf(old).NumField()
+	for i := 0; i < fieldCount; i++ {
+		oldField := reflect.ValueOf(&old).Elem().Field(i)
+		newField := reflect.ValueOf(&new).Elem().Field(i)
+
+		if !newField.IsZero() {
+			oldField.Set(newField)
+		}
+	}
+
+	return old
 }
 
 func (f *file) List() ([]core.Command, error) {
