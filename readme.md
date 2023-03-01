@@ -23,12 +23,12 @@ Usage:
   grun [command]
 
 Available Commands:
+  add         新建命令
   completion  Generate the autocompletion script for the specified shell
   delete      删除命令
   help        Help about any command
   list        列出所有命令
   run         运行命令
-  store       新建新的命令
   update      更新命令
 
 Flags:
