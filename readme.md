@@ -5,7 +5,7 @@
 ## 安装
 
 ```bash
-go install github.com/eleven26/grun@v0.0.1
+go install github.com/eleven26/grun@vlatest
 ```
 
 ## 支持的命令
