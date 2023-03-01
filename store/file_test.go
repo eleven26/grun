@@ -20,7 +20,7 @@ func TestFileStore(t *testing.T) {
 	defer fs.Delete("store.json") // nolint
 
 	store := NewFileStore(path)
-	err := store.Store(command)
+	err := store.Add(command)
 	assert.Nil(t, err)
 
 	// 读取文件内容
@@ -38,14 +38,14 @@ func TestRemove(t *testing.T) {
 	defer fs.Delete("store.json") // nolint
 
 	store := NewFileStore(path)
-	err := store.Store(core.Command{
+	err := store.Add(core.Command{
 		Name:        "foo",
 		Command:     "ls",
 		Description: "List files in current directory.",
 	})
 	assert.Nil(t, err)
 
-	err = store.Store(core.Command{
+	err = store.Add(core.Command{
 		Name:        "bar",
 		Command:     "ls",
 		Description: "List files in current directory.",
@@ -84,7 +84,7 @@ func TestUpdate(t *testing.T) {
 	defer fs.Delete("store.json") // nolint
 
 	store := NewFileStore(path)
-	err := store.Store(core.Command{
+	err := store.Add(core.Command{
 		Name:        "foo",
 		Command:     "ls",
 		Description: "List files in current directory.",
@@ -137,10 +137,10 @@ func TestList(t *testing.T) {
 	}
 
 	store := NewFileStore(path)
-	err := store.Store(cmds[0])
+	err := store.Add(cmds[0])
 	assert.Nil(t, err)
 
-	err = store.Store(cmds[1])
+	err = store.Add(cmds[1])
 	assert.Nil(t, err)
 
 	commands, err := store.List()

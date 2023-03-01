@@ -27,7 +27,7 @@ func runStore(cmd *cobra.Command, args []string) {
 		Description: description,
 	}
 
-	if err := Store(command); err != nil {
+	if err := Add(command); err != nil {
 		panic(err)
 	}
 }

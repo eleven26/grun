@@ -22,7 +22,7 @@ func NewFileStore(filepath string) core.Store {
 	}
 }
 
-func (f *file) Store(command core.Command) error {
+func (f *file) Add(command core.Command) error {
 	commands, err := f.commands()
 	if err != nil {
 		return err

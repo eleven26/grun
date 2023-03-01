@@ -11,8 +11,8 @@ func Init(file string) {
 	store = store2.NewFileStore(file)
 }
 
-func Store(command core.Command) error {
-	return store.Store(command)
+func Add(command core.Command) error {
+	return store.Add(command)
 }
 
 func List() ([]core.Command, error) {
