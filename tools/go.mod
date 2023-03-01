@@ -1,4 +1,4 @@
-module github.com/eleven26/rds_exporter/tools
+module github.com/eleven26/grun/tools
 
 go 1.15
 
