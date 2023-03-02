@@ -10,14 +10,11 @@ var DeleteCmd = &cobra.Command{
 	Use:   "delete",
 	Short: "删除命令",
 	Run:   runDelete,
-}
-
-func init() {
-	_ = DeleteCmd.MarkFlagRequired("id")
+	Args:  cobra.ExactArgs(1),
 }
 
 func runDelete(cmd *cobra.Command, args []string) {
-	id, _ := cmd.Flags().GetString("id")
+	id := args[0]
 
 	if err := Delete(cast.ToInt(id)); err != nil {
 		panic(err)

@@ -15,16 +15,10 @@ var RunCmd = &cobra.Command{
 	Use:   "run",
 	Short: "运行命令",
 	Run:   runCmd,
-}
-
-func init() {
-	_ = UpdateCmd.MarkFlagRequired("id")
+	Args:  cobra.ExactArgs(1),
 }
 
 func runCmd(cmd *cobra.Command, args []string) {
-	if len(args) != 1 {
-		panic("invalid arguments")
-	}
 	id := cast.ToInt(args[0])
 
 	cmds, err := List()

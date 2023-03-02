@@ -16,11 +16,6 @@ func main() {
 		Long:  `使用 "-h" 参数查看所有子命令`,
 	}
 
-	rootCmd.PersistentFlags().StringP("id", "i", "", "id")
-	rootCmd.PersistentFlags().StringP("name", "n", "", "名称")
-	rootCmd.PersistentFlags().StringP("command", "c", "", "命令")
-	rootCmd.PersistentFlags().StringP("description", "d", "", "描述")
-
 	rootCmd.AddCommand(cmd.AddCmd)
 	rootCmd.AddCommand(cmd.UpdateCmd)
 	rootCmd.AddCommand(cmd.DeleteCmd)

@@ -61,7 +61,7 @@ grun list
 
 ### 运行命令
 
-```
+```shell
 # 最后一个参数是 id
 grun run 1
 ```
@@ -69,7 +69,7 @@ grun run 1
 ### 添加命令
 
 ```shell
-grun store -n "ls" -c "ls /var" -d "test command"
+grun add
 ```
 
 ### 删除命令
@@ -82,5 +82,6 @@ grun delete 1
 ### 更新命令
 
 ```shell
-grun update 1 -c "ls /var/log"
+# 最后一个参数是 id
+grun update 1
 ```
