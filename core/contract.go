@@ -8,8 +8,9 @@ type Command struct {
 }
 
 type Store interface {
-	Add(command Command) error
+	Add(command Command) (*Command, error)
 	Remove(id int) error
 	Update(id int, command Command) error
 	List() ([]Command, error)
+	Get(id int) (*Command, error)
 }

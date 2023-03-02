@@ -16,22 +16,42 @@ type file struct {
 	filepath string
 }
 
+func (f *file) Get(id int) (*core.Command, error) {
+	commands, err := f.commands()
+	if err != nil {
+		return nil, err
+	}
+
+	for _, command := range commands {
+		if command.Id == id {
+			return &command, nil
+		}
+	}
+
+	return nil, errors.New("command not found")
+}
+
 func NewFileStore(filepath string) core.Store {
 	return &file{
 		filepath: filepath,
 	}
 }
 
-func (f *file) Add(command core.Command) error {
+func (f *file) Add(command core.Command) (*core.Command, error) {
 	commands, err := f.commands()
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	command.Id = f.nextId(commands)
 	commands = append(commands, command)
 
-	return f.save(commands)
+	err = f.save(commands)
+	if err != nil {
+		return nil, err
+	}
+
+	return &command, nil
 }
 
 func (f *file) nextId(commands []core.Command) int {

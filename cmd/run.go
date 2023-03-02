@@ -4,6 +4,8 @@ import (
 	"os"
 	"os/exec"
 
+	"github.com/eleven26/grun/console"
+
 	"github.com/eleven26/grun/core"
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
@@ -40,7 +42,7 @@ func runCmd(cmd *cobra.Command, args []string) {
 	}
 
 	if !found {
-		panic("command not found")
+		console.Error("command not found")
 	}
 }
 

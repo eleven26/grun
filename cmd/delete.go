@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"github.com/eleven26/grun/console"
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
 )
@@ -21,4 +22,6 @@ func runDelete(cmd *cobra.Command, args []string) {
 	if err := Delete(cast.ToInt(id)); err != nil {
 		panic(err)
 	}
+
+	console.Success("命令删除成功")
 }

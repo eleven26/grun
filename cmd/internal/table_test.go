@@ -25,3 +25,20 @@ func TestOutputTable(t *testing.T) {
 | 1  |  ls  | ls /var | test command |
 +----+------+---------+--------------+`, s)
 }
+
+func TestOutputCmd(t *testing.T) {
+	command := core.Command{
+		Id:          1,
+		Name:        "ls",
+		Command:     "ls /var",
+		Description: "test command",
+	}
+
+	s := OutputCmd(command)
+
+	assert.Equal(t, `+----+------+---------+--------------+
+| ID | 名称 |  命令   |     描述     |
++----+------+---------+--------------+
+| 1  |  ls  | ls /var | test command |
++----+------+---------+--------------+`, s)
+}

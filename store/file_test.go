@@ -20,7 +20,7 @@ func TestFileStore(t *testing.T) {
 	defer fs.Delete("store.json") // nolint
 
 	store := NewFileStore(path)
-	err := store.Add(command)
+	_, err := store.Add(command)
 	assert.Nil(t, err)
 
 	// 读取文件内容
@@ -33,19 +33,40 @@ func TestFileStore(t *testing.T) {
 	assert.Equal(t, command, cmd[0])
 }
 
+func TestGet(t *testing.T) {
+	command := core.Command{
+		Name:        "test",
+		Command:     "ls -lh",
+		Description: "List files in current directory.",
+	}
+
+	path := "store.json"
+	defer fs.Delete("store.json") // nolint
+
+	store := NewFileStore(path)
+	_, err := store.Add(command)
+	assert.Nil(t, err)
+
+	cmd, err := store.Get(1)
+	assert.Nil(t, err)
+
+	command.Id = 1
+	assert.Equal(t, command, *cmd)
+}
+
 func TestRemove(t *testing.T) {
 	path := "store.json"
 	defer fs.Delete("store.json") // nolint
 
 	store := NewFileStore(path)
-	err := store.Add(core.Command{
+	_, err := store.Add(core.Command{
 		Name:        "foo",
 		Command:     "ls",
 		Description: "List files in current directory.",
 	})
 	assert.Nil(t, err)
 
-	err = store.Add(core.Command{
+	_, err = store.Add(core.Command{
 		Name:        "bar",
 		Command:     "ls",
 		Description: "List files in current directory.",
@@ -84,7 +105,7 @@ func TestUpdate(t *testing.T) {
 	defer fs.Delete("store.json") // nolint
 
 	store := NewFileStore(path)
-	err := store.Add(core.Command{
+	_, err := store.Add(core.Command{
 		Name:        "foo",
 		Command:     "ls",
 		Description: "List files in current directory.",
@@ -137,10 +158,10 @@ func TestList(t *testing.T) {
 	}
 
 	store := NewFileStore(path)
-	err := store.Add(cmds[0])
+	_, err := store.Add(cmds[0])
 	assert.Nil(t, err)
 
-	err = store.Add(cmds[1])
+	_, err = store.Add(cmds[1])
 	assert.Nil(t, err)
 
 	commands, err := store.List()

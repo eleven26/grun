@@ -11,12 +11,16 @@ func Init(file string) {
 	store = store2.NewFileStore(file)
 }
 
-func Add(command core.Command) error {
+func Add(command core.Command) (*core.Command, error) {
 	return store.Add(command)
 }
 
 func List() ([]core.Command, error) {
 	return store.List()
+}
+
+func Get(id int) (*core.Command, error) {
+	return store.Get(id)
 }
 
 func Delete(id int) error {

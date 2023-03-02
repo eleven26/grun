@@ -31,3 +31,8 @@ func OutputTable(commands []core.Command) string {
 
 	return table.String()
 }
+
+func OutputCmd(cmd core.Command) string {
+	cmds := []core.Command{cmd}
+	return OutputTable(cmds)
+}
